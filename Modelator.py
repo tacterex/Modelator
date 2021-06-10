@@ -8,21 +8,36 @@ SQRT2 = math.sqrt(2)
 SQRT3 = math.sqrt(3)
 selfWindow = Tk()
 selfCanvas = Canvas(selfWindow)
-
-rotationx, rotationy, rotationz = 0, 0, 25
+selfWindow.title("Welcome to modelator window!")
+selfWindow.geometry("600x600")
+selfWindow.resizable(False, False)
+selfCanvas.focus_set()
 
 def init():
-    selfWindow.title("Welcome to modelator window!")
-    selfWindow.geometry("600x600")
-def rebuild(rx, ry, rz):
+    global rotationx, rotationy, rotationz
+    rotationx, rotationy, rotationz = 0, 0, 0
+
+def rotx(t):
+    global rotationx
+    if t == "Up":
+        rotationx -= 1
+    elif t == "Down":
+        rotationx += 1
+    rebuild()
+
+def rebuild():
+    global rotationx, rotationy, rotationz
     selfCanvas.delete(ALL)
-    rx, ry, rz = rx%360, ry%360, rz%360
-    if 0 <= rz <= 90:
+    rx, ry, rz = rotationx%360, rotationy%360, rotationz%360
+    if -90 <= rx <= 90:
         selfCanvas.create_rectangle(
-            0, 300-300*rz/90, 600, 300+300*rz/90,
+            0, 300-abs(300*rx/90), 600, 300+abs(300*rx/90),
             outline="black", fill="lightgray"
         )
+
 def update():
-    rebuild(rotationx, rotationy, rotationz)
+    rebuild()
     selfCanvas.pack(fill=BOTH, expand=1)
+    selfCanvas.bind("<w>", lambda k: rotx("Up"))
+    selfCanvas.bind("<s>", lambda k: rotx("Down"))
     selfWindow.mainloop()
