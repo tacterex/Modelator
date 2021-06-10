@@ -1,2 +1,0 @@
-import Modelator
-Modelator.update()
