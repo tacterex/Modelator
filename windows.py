@@ -8,6 +8,12 @@ class buildWindow(Tk):
     def __init__(self, n=1):
         super().__init__()
         self.n = n
+        self.axes = [
+            [0, 300, 600, 300],
+            [300, 600, 300, 0],
+            [0, 600, 600, 0],
+            [0, 0, 600, 600]
+        ]
         self.selfCanvas = Canvas(self, width=600, height=600, background="lightgray")
         self.buildself()
         self.selfCanvas.pack(fill=BOTH, expand=1)
@@ -18,7 +24,7 @@ class buildWindow(Tk):
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "Square",
         justify="center", font="Arial 26",
-        command=lambda: obj.Square(self.selfCanvas, self.n, 300, 300, 300)
+        command=lambda: obj.Square(self.selfCanvas, self.n, 300, 300, 175)
         )
         self.CubeButton.place(x=0, y=600, width = 300, height = 100)
         self.CircleButton = Button(self, text = "Circle",
@@ -26,17 +32,8 @@ class buildWindow(Tk):
         )
         self.CircleButton.place(x=300, y=600, width = 300, height = 100)
         #
-        self.selfCanvas.create_line(
-            0, 300, 600, 300, arrow=tk.LAST
-        )
-        self.selfCanvas.create_line(
-            300, 600, 300, 0, arrow=tk.LAST
-        )
-        if self.n > 2:
-            self.selfCanvas.create_line(
-                0, 600, 600, 0, arrow=tk.LAST
-            )
-
+        for i in range(self.n):
+            self.selfCanvas.create_line(self.axes[i], arrow = tk.LAST)
 
     
 
