@@ -22,8 +22,14 @@ def rebuild():
     if -90 <= rx <= 90:
         vars.selfCanvas.create_rectangle(
             0, 300-300*rx/90, 600, 300+300*rx/90,
-            outline="black", fill="lightgray"
+            outline="black", fill="whitesmoke"
         )
+        if rx != 0:
+            for i in range(int(300-300*rx/90), int(300+300*rx/90), int(6*rx/18)):
+                vars.selfCanvas.create_line(
+                    0, i, 600, i,
+                    dash=(4,4)
+                )
 
 def update():
     rebuild()
