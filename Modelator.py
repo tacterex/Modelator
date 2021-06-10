@@ -7,6 +7,8 @@ import vars
 SQRT2 = math.sqrt(2)
 SQRT3 = math.sqrt(3)
 
+DWP = lambda a, b: 0 if a==0 else (a/abs(a))*abs(a)%b
+
 def rotx(t):
     if t == "Up":
         vars.rotationx -= 1
@@ -16,7 +18,7 @@ def rotx(t):
 
 def rebuild():
     vars.selfCanvas.delete(ALL)
-    rx, ry, rz = vars.rotationx % 360, vars.rotationy % 360, vars.rotationz % 360
+    rx, ry, rz = DWP(vars.rotationx, 360), DWP(vars.rotationy, 360), DWP(vars.rotationz, 360)
     if -90 <= rx <= 90:
         vars.selfCanvas.create_rectangle(
             0, 300-300*rx/90, 600, 300+300*rx/90,
