@@ -8,12 +8,6 @@ class buildWindow(Tk):
     def __init__(self, n=1):
         super().__init__()
         self.n = n
-        self.axes = [
-            [0, 300, 600, 300],
-            [300, 600, 300, 0],
-            [0, 600, 600, 0],
-            [0, 0, 600, 600]
-        ]
         self.selfCanvas = Canvas(self, width=600, height=600, background="lightgray")
         self.buildself()
         self.selfCanvas.pack(fill=BOTH, expand=1)
@@ -33,23 +27,16 @@ class buildWindow(Tk):
         self.CircleButton.place(x=300, y=600, width = 300, height = 100)
         #
         for i in range(self.n):
-            self.selfCanvas.create_line(self.axes[i], arrow = tk.LAST)
+            self.selfCanvas.create_line(obj.AXES[i], arrow = tk.LAST)
 
     
 
-currentWindow = {"n": None, "window": None, "canvas": None}
 def d2():
-    currentWindow["n"] = 2
-    currentWindow["window"] = buildWindow(currentWindow["n"])
-    currentWindow["canvas"] = currentWindow["window"].selfCanvas
+    currentWindow = buildWindow(2)
 def d3():
-    currentWindow["n"] = 3
-    currentWindow["window"] = buildWindow(currentWindow["n"])
-    currentWindow["canvas"] = currentWindow["window"].selfCanvas
+    currentWindow = buildWindow(3)
 def d4():
-    currentWindow["n"] = 4
-    currentWindow["window"] = buildWindow(currentWindow["n"])
-    currentWindow["canvas"] = currentWindow["window"].selfCanvas
+    currentWindow = buildWindow(4)
 funs = [d2, d3, d4]
 
 
