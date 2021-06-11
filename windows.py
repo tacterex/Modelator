@@ -20,11 +20,11 @@ class buildWindow(Tk):
         justify="center", font="Arial 26",
         command=lambda: obj.Square(self.selfCanvas, self.n, 300, 300, 50)
         )
-        self.CubeButton.place(x=0, y=600, width = 300, height = 100)
-        self.CircleButton = Button(self, text = "Circle",
-        justify="center", font="Arial 26"
-        )
-        self.CircleButton.place(x=300, y=600, width = 300, height = 100)
+        self.CubeButton.place(x=0, y=600, width = 600, height = 100)
+        #self.CircleButton = Button(self, text = "Circle",
+        #justify="center", font="Arial 26"
+        #)
+        #self.CircleButton.place(x=300, y=600, width = 300, height = 100)
         #self.quitButton = Button(
             #self, text="Quit", command=lambda: quit(), justify="center", font="Arial 26"
         #)
