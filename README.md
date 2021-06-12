@@ -1,6 +1,8 @@
 # Modelator
-When the program starts, choose one of variants (2D, 3D, 4D)
-Then you will see the next window.
-When I will finish this program, you will be able to choose the figure (like "Cube")
-and see tjis figure in nD
-See you soon
+Program can show you some shapes (hypercube, hypersphere, simplex) in nD
+
+# Start window
+After starting the .exe file (it will be there soon) you need to choose your space to work. U will see some buttons with names of spaces (for example, 2D).
+
+# How to see the shapes
+In your space window, in the bottom of this you will see some buutons with names if shapes (now there is only Cube). Click on it and enjoy ! 
