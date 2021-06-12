@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, Button, BOTH
+from tkinter import Tk, Canvas, Button, BOTH, font
 import tkinter as tk
 import obj
 #test comment
@@ -27,7 +27,7 @@ class buildWindow(Tk):
         self.selfCanvas.pack(fill=BOTH, expand=1)
 
     def buildself(self):
-        self.geometry("600x700")
+        self.geometry("1200x700")
         self.resizable(False, False)
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
@@ -39,10 +39,15 @@ class buildWindow(Tk):
         justify="center", font="Arial 24", command=lambda: callInfo("HyperCube")
         )
         self.CubeInfoBt.place(x=300,y=600,width=300,height=100)
-        #self.quitButton = Button(
-            #self, text="Quit", command=lambda: quit(), justify="center", font="Arial 26"
-        #)
-        #self.quitButton.place(x=0, y=700, width=600, height=100)
+        self.SimplexButton = Button(self, text = "Simplex",
+        font="Arial 24", justify="center",
+        command=lambda: obj.Simplex(self.selfCanvas, self.n, 50, 250, 100)
+        )
+        self.SimplexButton.place(x=600, y=0, width=300, height=100)
+        self.SimplexInfoBt = Button(self, text = "Get Info",
+        justify="center", font="Arial 24", command=lambda: callInfo("Simplex")
+        )
+        self.SimplexInfoBt.place(x=300,y=600,width=300,height=100)
         #
         for i in range(self.n):
             self.selfCanvas.create_line(obj.AXES(self.n)[i], arrow = tk.LAST, width = 0.5)
