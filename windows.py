@@ -19,7 +19,7 @@ class buildWindow(Tk):
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
         justify="center", font="Arial 26",
-        command=lambda: obj.Square(self.selfCanvas, self.n, 300, 300, 50)
+        command=lambda: obj.Square(self.selfCanvas, self.n, 5, 300, 80)
         )
         self.CubeButton.place(x=0, y=600, width = 600, height = 100)
         #self.CircleButton = Button(self, text = "Circle",
