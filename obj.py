@@ -8,11 +8,17 @@ SQRT3 = math.sqrt(3)
 AXES = [
     [0, 300, 600, 300],
     [300, 600, 300, 0],
-    [300-math.sqrt(30000), 600, 300+math.sqrt(30000), 0],
-    [0, 300+math.sqrt(30000), 600, 300-math.sqrt(30000)],
-    [0, 300-math.sqrt(30000), 600, 300+math.sqrt(30000)],
-    [300-math.sqrt(30000), 0, 300+math.sqrt(30000), 600]
+    [202.524, 600, 397.476, 0],
+    [82.037, 600, 517.963, 0],
+    [0, 517.963, 600, 82.037],
+    [0, 397.476, 600, 202.524],
+    [0, 202.524, 600, 397.476],
+    [0, 82.037, 600, 517.963],
+    [82.037, 0, 517.963, 600],
+    [202.524, 0, 397.476, 600]
 ]
+
+print(len(AXES))
 
 SIGN = lambda a: a/abs(a)
 
@@ -34,7 +40,7 @@ class Square:
         if self.n == 2:
             x0, y0, x1, y1 = self.x, self.y, self.x+self.a, self.y-self.a
             self.verts = [[x0, y0], [x0, y1], [x1, y1], [x1, y0]]
-            self.canvas.create_rectangle(self.x, self.y, self.x+self.a, self.y-self.a, width=3)
+            self.canvas.create_rectangle(self.x, self.y, self.x+self.a, self.y-self.a, width=1.5)
         else:
             a = AXES[self.n-1][3] - AXES[self.n-1][1]
             b = AXES[self.n-1][0] - AXES[self.n-1][2]
@@ -48,7 +54,7 @@ class Square:
         other.buildself()
         for vert in range(len(self.verts)):
             self.canvas.create_line(
-                self.verts[vert][0], self.verts[vert][1], other.verts[vert][0], other.verts[vert][1], arrow=tk.LAST if self.level==0 else None, width=3
+                self.verts[vert][0], self.verts[vert][1], other.verts[vert][0], other.verts[vert][1], arrow=tk.LAST if self.level==0 else None, width=1.5
             )
         temp = []
         for elem in self.verts:
