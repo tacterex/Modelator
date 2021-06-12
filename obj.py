@@ -74,3 +74,19 @@ class Square:
         for elem in other.verts:
             temp.append(elem)
         return temp
+
+
+
+class Simplex:
+    def __init__(self, canvas:Canvas, n, pointx, pointy, size):
+        self.canvas = canvas
+        self.n = n
+        self.x, self.y = pointx, pointy
+        self.h = size
+        self.verts = []
+        self.buildself()
+    
+    def buildself(self):
+        if self.n==2:
+            self.verts = [[self.x-self.h/SQRT3, self.y+self.h/2], [self.x+self.h/SQRT3, self.y+self.h/2], [self.x, self.y-self.h/2]]
+            self.canvas.create_polygon(self.verts)
