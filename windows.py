@@ -32,7 +32,7 @@ class buildWindow(Tk):
         #self.quitButton.place(x=0, y=700, width=600, height=100)
         #
         for i in range(self.n):
-            self.selfCanvas.create_line(obj.AXES[i], arrow = tk.LAST)
+            self.selfCanvas.create_line(obj.AXES[i], arrow = tk.LAST, width = 0.5)
 
     
 
@@ -46,7 +46,15 @@ def d5():
     currentWindow = buildWindow(5)
 def d6():
     currentWindow = buildWindow(6)
-funs = [d2, d3, d4, d5, d6]
+def d7():
+    currentWindow = buildWindow(7)
+def d8():
+    currentWindow = buildWindow(8)
+def d9():
+    currentWindow = buildWindow(9)
+def d10():
+    currentWindow = buildWindow(10)
+funs = [d2, d3, d4, d5, d6, d7, d8, d9, d10]
 
 
 
@@ -58,7 +66,7 @@ class startWindow(Tk):
     
     def buildself(self):
         self.title("start")
-        for i in range(5):
+        for i in range(9):
             obj = Button(self,
                 text=f"{i+2}D", height = 2, width = 35, justify="center",
                 command=funs[i]
