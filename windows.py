@@ -19,7 +19,7 @@ class buildWindow(Tk):
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
         justify="center", font="Arial 26",
-        command=lambda: obj.Square(self.selfCanvas, self.n, 5, 300, 80)
+        command=lambda: obj.Square(self.selfCanvas, self.n, 10, 300, 80,  axs=obj.AXES(self.n))
         )
         self.CubeButton.place(x=0, y=600, width = 600, height = 100)
         #self.CircleButton = Button(self, text = "Circle",
@@ -32,7 +32,7 @@ class buildWindow(Tk):
         #self.quitButton.place(x=0, y=700, width=600, height=100)
         #
         for i in range(self.n):
-            self.selfCanvas.create_line(obj.AXES[i], arrow = tk.LAST, width = 0.5)
+            self.selfCanvas.create_line(obj.AXES(self.n)[i], arrow = tk.LAST, width = 0.5)
 
     
 
