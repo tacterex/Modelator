@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas
+from tkinter import Canvas
 import tkinter as tk
 import math
 
