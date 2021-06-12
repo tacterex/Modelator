@@ -17,7 +17,7 @@ class buildWindow(Tk):
         self.geometry("600x700")
         self.resizable(False, False)
         self.title(f"{self.n}D window")
-        self.CubeButton = Button(self, text = "Square",
+        self.CubeButton = Button(self, text = "HyperCube",
         justify="center", font="Arial 26",
         command=lambda: obj.Square(self.selfCanvas, self.n, 300, 300, 50)
         )
@@ -42,7 +42,11 @@ def d3():
     currentWindow = buildWindow(3)
 def d4():
     currentWindow = buildWindow(4)
-funs = [d2, d3, d4]
+def d5():
+    currentWindow = buildWindow(5)
+def d6():
+    currentWindow = buildWindow(6)
+funs = [d2, d3, d4, d5, d6]
 
 
 
@@ -54,7 +58,7 @@ class startWindow(Tk):
     
     def buildself(self):
         self.title("start")
-        for i in range(3):
+        for i in range(5):
             obj = Button(self,
                 text=f"{i+2}D", height = 2, width = 35, justify="center",
                 command=funs[i]
