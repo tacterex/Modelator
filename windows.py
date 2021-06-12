@@ -4,6 +4,19 @@ import obj
 #test comment
 
 
+class infoWindow(Tk):
+    def __init__(self, shape):
+        super().__init__()
+        self.shape = shape
+        self.buildself()
+    
+    def buildself(self):
+        self.geometry("300x300")
+        self.title("Info")
+def callInfo(text):
+    psevdoApp = infoWindow(text)
+
+
 
 class buildWindow(Tk):
     def __init__(self, n=1):
@@ -18,14 +31,14 @@ class buildWindow(Tk):
         self.resizable(False, False)
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
-        justify="center", font="Arial 26",
+        justify="center", font="Arial 24",
         command=lambda: obj.Square(self.selfCanvas, self.n, 10, 300, 80,  axs=obj.AXES(self.n))
         )
-        self.CubeButton.place(x=0, y=600, width = 600, height = 100)
-        #self.CircleButton = Button(self, text = "Circle",
-        #justify="center", font="Arial 26"
-        #)
-        #self.CircleButton.place(x=300, y=600, width = 300, height = 100)
+        self.CubeButton.place(x=0, y=600, width = 300, height = 100)
+        self.CubeInfoBt = Button(self, text = "Get Info",
+        justify="center", font="Arial 24", command=lambda: callInfo("HyperCube")
+        )
+        self.CubeInfoBt.place(x=300,y=600,width=300,height=100)
         #self.quitButton = Button(
             #self, text="Quit", command=lambda: quit(), justify="center", font="Arial 26"
         #)
