@@ -78,8 +78,9 @@ class Square:
 
 
 class Simplex:
-    def __init__(self, canvas:Canvas, n, pointx, pointy, size):
+    def __init__(self, canvas:Canvas, n, pointx, pointy, size, axs=None):
         self.canvas = canvas
+        self.axes = axs
         self.n = n
         self.x, self.y = pointx, pointy
         self.h = size
@@ -89,4 +90,16 @@ class Simplex:
     def buildself(self):
         if self.n==2:
             self.verts = [[self.x-self.h/SQRT3, self.y+self.h/2], [self.x+self.h/SQRT3, self.y+self.h/2], [self.x, self.y-self.h/2]]
-            self.canvas.create_polygon(self.verts)
+            self.canvas.create_line(self.verts[0], self.verts[1])
+            self.canvas.create_line(self.verts[1], self.verts[2])
+            self.canvas.create_line(self.verts[2], self.verts[0])
+        else:
+            temp = Simplex(self.canvas, self.n-1, self.x, self.y, self.h, self.axes)
+            a = self.axes[self.n-1][3] - self.axes[self.n-1][1]
+            b = self.axes[self.n-1][0] - self.axes[self.n-1][2]
+            sign  = SIGN(a/b)
+            sin = sinFromTg(a, b)
+            cos = cosFormTg(a, b)
+            point = [self.x+self.h*cos, self.y-self.h*sin*sign]
+            for p in temp.verts:
+                self.canvas.create_line(p, point)
