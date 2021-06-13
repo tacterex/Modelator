@@ -17,6 +17,10 @@ def callInfo(text):
     psevdoApp = infoWindow(text)
 
 
+HYPERCUBE = "HyperCube"
+SIMPLEX = "Simplex"
+
+
 
 class buildWindow(Tk):
     def __init__(self, n=1):
@@ -32,26 +36,37 @@ class buildWindow(Tk):
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
         justify="center", font="Arial 24",
-        command=lambda: obj.Square(self.selfCanvas, self.n, 10, 300, 80,  axs=obj.AXES(self.n))
+        command=lambda: self.__spawnShape(HYPERCUBE)
         )
         self.CubeButton.place(x=0, y=600, width = 300, height = 100)
         self.CubeInfoBt = Button(self, text = "Get Info",
-        justify="center", font="Arial 24", command=lambda: callInfo("HyperCube")
+        justify="center", font="Arial 24", command=lambda: callInfo(HYPERCUBE)
         )
         self.CubeInfoBt.place(x=300,y=600,width=300,height=100)
         self.SimplexButton = Button(self, text = "Simplex",
         font="Arial 24", justify="center",
-        command=lambda: obj.Simplex(self.selfCanvas, self.n, 50, 250, 100)
+        command=lambda: self.__spawnShape(SIMPLEX)
         )
         self.SimplexButton.place(x=600, y=0, width=300, height=100)
         self.SimplexInfoBt = Button(self, text = "Get Info",
-        justify="center", font="Arial 24", command=lambda: callInfo("Simplex")
+        justify="center", font="Arial 24", command=lambda: callInfo(SIMPLEX)
         )
         self.SimplexInfoBt.place(x=300,y=600,width=300,height=100)
         #
+        self.__buildAxes()
+
+    def __buildAxes(self):
+        self.selfCanvas.delete(tk.ALL)
         for i in range(self.n):
             self.selfCanvas.create_line(obj.AXES(self.n)[i], arrow = tk.LAST, width = 0.5)
-
+    
+    def __spawnShape(self, shape):
+        self.__buildAxes()
+        if shape == HYPERCUBE:
+            obj.Square(self.selfCanvas, self.n, 10, 300, 80,  axs=obj.AXES(self.n))
+        elif shape == SIMPLEX:
+            obj.Simplex(self.selfCanvas, self.n, 80, 250, 100, obj.AXES(self.n))
+        
     
 
 def d2():
