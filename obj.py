@@ -78,9 +78,11 @@ class Square:
 
 
 class Simplex:
-    def __init__(self, canvas:Canvas, n, pointx, pointy, size, axs=None):
+    def __init__(self, canvas:Canvas, n, pointx, pointy, size, level=1, color=None, axs=None):
         self.canvas = canvas
         self.axes = axs
+        self.level = level
+        self.color = color
         self.n = n
         self.x, self.y = pointx, pointy
         self.h = size
@@ -89,12 +91,15 @@ class Simplex:
     
     def buildself(self):
         if self.n==2:
-            self.verts = [[self.x-self.h/SQRT3, self.y+self.h/2], [self.x+self.h/SQRT3, self.y+self.h/2], [self.x, self.y-self.h/2]]
-            self.canvas.create_line(self.verts[0], self.verts[1])
-            self.canvas.create_line(self.verts[1], self.verts[2])
-            self.canvas.create_line(self.verts[2], self.verts[0])
+            self.verts = [[self.x-self.h/SQRT3, self.y+self.h/3], [self.x+self.h/SQRT3, self.y+self.h/3], [self.x, self.y-self.h*2/3]]
+            self.canvas.create_line(self.verts[0], self.verts[1], fill=self.color)
+            self.canvas.create_line(self.verts[1], self.verts[2], fill=self.color)
+            self.canvas.create_line(self.verts[2], self.verts[0], fill=self.color)
+            self.canvas.create_oval(
+                self.x-3, self.y-3, self.x+3, self.y+3, fill="black"
+            )
         else:
-            temp = Simplex(self.canvas, self.n-1, self.x, self.y, self.h, self.axes)
+            temp = Simplex(self.canvas, self.n-1, self.x, self.y, self.h, self.level-1, "red", self.axes)
             a = self.axes[self.n-1][3] - self.axes[self.n-1][1]
             b = self.axes[self.n-1][0] - self.axes[self.n-1][2]
             sign  = SIGN(a/b)
@@ -102,4 +107,8 @@ class Simplex:
             cos = cosFormTg(a, b)
             point = [self.x+self.h*cos, self.y-self.h*sin*sign]
             for p in temp.verts:
-                self.canvas.create_line(p, point)
+                self.canvas.create_line(p, point, fill=self.color if self.level<1 else "blue")
+            self.verts = temp.verts
+            self.verts.append(point)
+            if self.level == 1:
+                self.canvas.create_line(self.x, self.y, point, dash=(2,2))
