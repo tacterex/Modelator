@@ -65,7 +65,7 @@ class buildWindow(Tk):
         if shape == HYPERCUBE:
             obj.Square(self.selfCanvas, self.n, 10, 300, 80,  axs=obj.AXES(self.n))
         elif shape == SIMPLEX:
-            obj.Simplex(self.selfCanvas, self.n, 80, 250, 100, obj.AXES(self.n))
+            obj.Simplex(self.selfCanvas, self.n, 70, 265, 100, axs=obj.AXES(self.n))
         
     
 
