@@ -70,23 +70,23 @@ class buildWindow(Tk):
     
 
 def d2():
-    currentWindow = buildWindow(2)
+    buildWindow(2)
 def d3():
-    currentWindow = buildWindow(3)
+    buildWindow(3)
 def d4():
-    currentWindow = buildWindow(4)
+    buildWindow(4)
 def d5():
-    currentWindow = buildWindow(5)
+    buildWindow(5)
 def d6():
-    currentWindow = buildWindow(6)
+    buildWindow(6)
 def d7():
-    currentWindow = buildWindow(7)
+    buildWindow(7)
 def d8():
-    currentWindow = buildWindow(8)
+    buildWindow(8)
 def d9():
-    currentWindow = buildWindow(9)
+    buildWindow(9)
 def d10():
-    currentWindow = buildWindow(10)
+    buildWindow(10)
 funs = [d2, d3, d4, d5, d6, d7, d8, d9, d10]
 
 
