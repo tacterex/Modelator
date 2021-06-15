@@ -4,7 +4,7 @@ import obj
 #test comment
 
 
-class infoWindow(Tk):
+"""class infoWindow(Tk):
     def __init__(self, shape):
         super().__init__()
         self.shape = shape
@@ -14,7 +14,7 @@ class infoWindow(Tk):
         self.geometry("300x300")
         self.title("Info")
 def callInfo(text):
-    psevdoApp = infoWindow(text)
+    psevdoApp = infoWindow(text)"""
 
 
 HYPERCUBE = "HyperCube"
@@ -31,27 +31,27 @@ class buildWindow(Tk):
         self.selfCanvas.pack(fill=BOTH, expand=1)
 
     def buildself(self):
-        self.geometry("1200x700")
+        self.geometry("600x800")
         self.resizable(False, False)
         self.title(f"{self.n}D window")
         self.CubeButton = Button(self, text = "HyperCube",
         justify="center", font="Arial 24",
         command=lambda: self.__spawnShape(HYPERCUBE)
         )
-        self.CubeButton.place(x=0, y=600, width = 300, height = 100)
-        self.CubeInfoBt = Button(self, text = "Get Info",
+        self.CubeButton.place(x=0, y=600, width = 600, height = 100)
+        """self.CubeInfoBt = Button(self, text = "Get Info",
         justify="center", font="Arial 24", command=lambda: callInfo(HYPERCUBE)
         )
-        self.CubeInfoBt.place(x=300,y=600,width=300,height=100)
+        self.CubeInfoBt.place(x=300,y=600,width=300,height=100)"""
         self.SimplexButton = Button(self, text = "Simplex",
         font="Arial 24", justify="center",
         command=lambda: self.__spawnShape(SIMPLEX)
         )
-        self.SimplexButton.place(x=600, y=0, width=300, height=100)
-        self.SimplexInfoBt = Button(self, text = "Get Info",
+        self.SimplexButton.place(x=0, y=700, width=600, height=100)
+        """self.SimplexInfoBt = Button(self, text = "Get Info",
         justify="center", font="Arial 24", command=lambda: callInfo(SIMPLEX)
         )
-        self.SimplexInfoBt.place(x=300,y=600,width=300,height=100)
+        self.SimplexInfoBt.place(x=300,y=600,width=300,height=100)"""
         #
         self.__buildAxes()
 
